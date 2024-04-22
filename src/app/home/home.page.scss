@@ -62,6 +62,7 @@ ion-content * {
   position: relative;
   animation-name: opacityAnim;
   animation-duration: 500ms;
+  flex-wrap: wrap;
 
   h5{
     color: #fff;

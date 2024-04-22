@@ -16,8 +16,24 @@
             <h5>{{crypto.rank}}</h5>
           </div>
           <div class="elem">
+            <h5>Mercat cap -</h5>
+            <h5>{{crypto.marketCapUsd | number : '1.2-2'}} t</h5>
+          </div>
+          <div class="elem">
+            <h5>VWAP 24h -</h5>
+            <h5>{{crypto.vwap24Hr}}</h5>
+          </div>
+          <div class="elem">
+            <h5>Suplement -</h5>
+            <h5>{{crypto.supply | number : '1.2-2'}} m</h5>
+          </div>
+          <div class="elem">
+            <h5>Volumen 24h -</h5>
+            <h5>{{ crypto.volumeUsd24Hr | number : '1.2-2'}} b</h5>
+          </div>
+          <div class="elem">
             <h5>24h% -</h5>
-            <h5 [ngStyle]="{'color' : getCryptoColor(crypto.changePercent24Hr)}">{{ crypto.changePercent24Hr | number : '1.2-2'}}</h5>
+            <h5 [ngStyle]="{'color' : getCryptoColor(crypto.changePercent24Hr)}">{{ crypto.changePercent24Hr | number : '1.2-2'}}%</h5>
           </div>
         </div>
       </div>
