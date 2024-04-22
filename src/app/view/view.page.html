@@ -6,6 +6,20 @@
           <h5><span>$</span> {{crypto.priceUsd | number : '1.2-2'}} </h5>
           <h6>{{crypto.name}} | <span>{{crypto.symbol}}</span></h6>
         </div>
+        <div class="data">
+          <div class="elem">
+            <h5>Nom -</h5>
+            <h5>{{crypto.name}}</h5>
+          </div>
+          <div class="elem">
+            <h5>Rank -</h5>
+            <h5>{{crypto.rank}}</h5>
+          </div>
+          <div class="elem">
+            <h5>24h% -</h5>
+            <h5 [ngStyle]="{'color' : getCryptoColor(crypto.changePercent24Hr)}">{{ crypto.changePercent24Hr | number : '1.2-2'}}</h5>
+          </div>
+        </div>
       </div>
   </div>
 </ion-content>
