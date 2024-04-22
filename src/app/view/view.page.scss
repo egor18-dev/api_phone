@@ -1,7 +1,16 @@
+@keyframes left{
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+
 ion-content * {
     margin: 0;
     padding: 0;
-  }
+}
 
 .content{
     width: 100%;
@@ -22,6 +31,8 @@ ion-content * {
     padding: 50px !important;
     margin: 25px !important;
     border-radius: 15px;
+    animation-name: left;
+    animation-duration: 500ms;
 
     h5{
         color: #15cc4c;
