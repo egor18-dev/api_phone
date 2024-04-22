@@ -32,7 +32,7 @@ export class ViewPage implements OnInit {
   }
 
   getCryptoColor (cryptoValue : any) {
-    return Number(cryptoValue) > 0 ? '#25b331' : '#e41010';
+    return parseInt(cryptoValue) > 0 ? '#25b331' : '#e41010';
   }
 
 }
