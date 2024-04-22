@@ -1,5 +1,6 @@
 <ion-content [fullscreen]="true">
   <div class="content">
+    <span class="return" routerLink="/home">&LeftArrow;</span>
       <div class="crypto" *ngIf="crypto" style="color: #fff;">
         <div class="top">
           <h5><span>$</span> {{crypto.priceUsd | number : '1.2-2'}} </h5>
