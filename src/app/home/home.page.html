@@ -1,7 +1,7 @@
 <ion-content [fullscreen]="true">
     <div class="content">
         <h1>Mercat</h1>
-        <div class="crypto" *ngFor="let crypto of getCryptos()">
+        <div class="crypto" *ngFor="let crypto of getCryptos()" routerLink="/view/{{crypto.id}}">
             <h5>{{crypto.name}}</h5>
             <span [ngStyle]="{'color': getCryptoColor(crypto.changePercent24Hr)}">
                 {{crypto.changePercent24Hr}}

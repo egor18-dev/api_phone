@@ -28,4 +28,9 @@ export class CryptoService {
     return this._cryptos;
   }
 
+  retrieveCrypto (id : string)
+  {
+    return this._httpClient.get(`${this._api_url}/${id}`);
+  }
+
 }
