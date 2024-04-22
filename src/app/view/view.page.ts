@@ -24,7 +24,6 @@ export class ViewPage implements OnInit {
     this._cryptoService.retrieveCrypto(this._id).subscribe({
       next: (data : any) => {
         this.crypto = data.data;
-        console.log(this.crypto);
       },
       error: () => {
         this._router.navigate(['/home']);
