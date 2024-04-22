@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CryptoService } from '../services/Crypto/crypto.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,10 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private _cryptoService : CryptoService) {}
+
+  getCryptos () {
+    return this._cryptoService.getCryptos();
+  }
 
 }
