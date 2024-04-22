@@ -14,4 +14,7 @@ export class HomePage {
     return this._cryptoService.getCryptos();
   }
 
+  getCryptoColor (cryptoValue : any) {
+    return Number(cryptoValue) > 0 ? '#25b331' : '#e41010';
+  }
 }
