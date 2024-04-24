@@ -7,8 +7,9 @@ import { Crypto } from 'src/app/models/crypto';
 })
 export class CryptoService {
 
-  private limit: number = 20;
-  private max: number = 100;
+  private _start: number = 0;
+  private _maxActual : number = 25;
+  private _max: number = 100;
   private _api_url: string = 'https://api.coincap.io/v2/assets';
   private _cryptos: Crypto[] = [];
 
@@ -18,7 +19,7 @@ export class CryptoService {
 
   retrieveCryptos() {
     return new Promise((resolve, reject) => {
-      this._httpClient.get(`${this._api_url}?limit=${this.limit}`).subscribe({
+      this._httpClient.get(`${this._api_url}?offset=${this._start}&&limit=${this._maxActual}`).subscribe({
         next: (data: any) => {
           resolve(data);
         },
