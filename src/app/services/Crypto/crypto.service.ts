@@ -7,30 +7,25 @@ import { Crypto } from 'src/app/models/crypto';
 })
 export class CryptoService {
 
-  private _api_url : string = 'https://api.coincap.io/v2/assets';
-  private _cryptos : Crypto [] = [];
+  private limit: number = 20;
+  private max: number = 100;
+  private _api_url: string = 'https://api.coincap.io/v2/assets';
+  private _cryptos: Crypto[] = [];
 
-  constructor(private _httpClient : HttpClient) { 
 
-    this.retrieveCryptos();
+  constructor(private _httpClient: HttpClient) {
   }
 
-  retrieveCryptos () {
-    this._httpClient.get(this._api_url).subscribe({
-      next: (data : any) => {
-        const getData = data.data;
-        this._cryptos = [...getData];
-      }
-    })
+  retrieveCryptos() {
+    return new Promise((resolve, reject) => {
+      this._httpClient.get(`${this._api_url}?limit=${this.limit}`).subscribe({
+        next: (data: any) => {
+          resolve(data);
+        },
+        error: (err: any) => {
+          reject(err);
+        }
+      });
+    });
   }
-
-  getCryptos () {
-    return this._cryptos;
-  }
-
-  retrieveCrypto (id : string)
-  {
-    return this._httpClient.get(`${this._api_url}/${id}`);
-  }
-
 }

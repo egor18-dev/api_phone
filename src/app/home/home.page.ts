@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CryptoService } from '../services/Crypto/crypto.service';
+import { InfiniteScrollCustomEvent } from '@ionic/angular';
+import { Crypto } from '../models/crypto';
 
 @Component({
   selector: 'app-home',
@@ -8,13 +10,39 @@ import { CryptoService } from '../services/Crypto/crypto.service';
 })
 export class HomePage {
 
-  constructor(private _cryptoService : CryptoService) {}
+  cryptos : Crypto [] = [];
+  items : any = [];
 
-  getCryptos () {
-    return this._cryptoService.getCryptos();
+  constructor (private _cryptoService : CryptoService) {}
+
+  ngOnInit() {
+    this.cryptos = [];
+
+    this._cryptoService.retrieveCryptos().then((data : any) => {
+      data.data.map((el : Crypto) => this.cryptos.push(el));
+    });
+
   }
 
-  getCryptoColor (cryptoValue : any) {
-    return Number(cryptoValue) > 0 ? '#25b331' : '#e41010';
+  private generateItems() {
+    const count = this.items.length + 1;
+    for (let i = 0; i < 50; i++) {
+      this.items.push(`Item ${count + i}`);
+    }
+  }
+
+  onIonInfinite(ev : any) {
+    this.generateItems();
+    setTimeout(() => {
+      (ev as InfiniteScrollCustomEvent).target.complete();
+    }, 500);
+  }
+
+  getCryptos () {
+    return this.cryptos;
+  }
+
+  getColor (price : string) {
+    return parseInt(price) > 0 ? 'green' : 'red';
   }
 }
