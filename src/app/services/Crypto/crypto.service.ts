@@ -11,13 +11,26 @@ export class CryptoService {
   private _maxActual : number = 25;
   private _max: number = 100;
   private _api_url: string = 'https://api.coincap.io/v2/assets';
-  private _cryptos: Crypto[] = [];
+  private _calls : number = 0;
+  
 
 
   constructor(private _httpClient: HttpClient) {
   }
 
   retrieveCryptos() {
+    if(this._maxActual >= 2000){
+      this._start = 0;
+      this._maxActual = 25;
+    }
+
+    if(this._calls > 0){
+      this._start = this._maxActual +1;
+      this._maxActual += 10;
+    }
+    
+    this._calls++;
+
     return new Promise((resolve, reject) => {
       this._httpClient.get(`${this._api_url}?offset=${this._start}&&limit=${this._maxActual}`).subscribe({
         next: (data: any) => {

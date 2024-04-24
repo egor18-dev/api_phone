@@ -1,8 +1,8 @@
 <ion-content>
     <h1>Mercat</h1>
     <ion-list>
-        <ion-item *ngFor="let crypto of getCryptos(); let index">
-            <h5>{{crypto.name}}</h5>
+        <ion-item *ngFor="let crypto of getCryptos(); index as i">
+            <h5>({{i + 1}}){{crypto.name}}</h5>
             <h5 [ngStyle]="{'color': getColor(crypto.changePercent24Hr)}">{{crypto.changePercent24Hr}}</h5>
         </ion-item>
     </ion-list>
