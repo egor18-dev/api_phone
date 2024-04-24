@@ -30,4 +30,28 @@ export class CryptoService {
     });
   }
 
+  getStart() {
+    return this._start;
+  }
+
+  setStart (start : number) {
+    this._start = start;
+  }
+
+  getMaxActual(){
+    return this._maxActual;
+  }
+
+  setMaxActual(maxActual : number) {
+    this._maxActual = maxActual;
+  }
+
+  getMax () {
+    return this._max;
+  }
+
+  setMax(max : number){
+    this._max = max;
+  }
+
 }
