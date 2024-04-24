@@ -24,7 +24,7 @@ ion-content * {
 ion-list {
   background: -webkit-linear-gradient(to right, #2f0743, #41295a);
   background: linear-gradient(to right, #2f0743, #41295a);
-  --background: #41295a; 
+  --background: #2f0743; 
 
   ion-item{
     --background: transparent; 
@@ -39,14 +39,15 @@ ion-list {
   }
 }
 
-.content h1 {
-  width: fit-content;
-  margin: 20px;
+h1 {
+  width: 100%;
+  padding: 20px !important;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 5px;
   color: #fff;
   position: relative;
+  background-color: #2f0743;
 }
 
 .content h1::before {
