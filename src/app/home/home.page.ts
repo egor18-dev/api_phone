@@ -11,7 +11,10 @@ import { Crypto } from '../models/crypto';
 export class HomePage {
 
   cryptos : Crypto [] = [];
+  cryptosCopy : Crypto [] = [];
   items : any = [];
+
+  public crypto : string = '';
 
   constructor (private _cryptoService : CryptoService) {}
 
@@ -20,8 +23,10 @@ export class HomePage {
   }
 
   private generateItems(remove : boolean = false) {
-    if(remove)
+    if(remove){
       this.cryptos = [];
+      this.cryptosCopy = this.cryptos;      
+    }
 
     this._cryptoService.retrieveCryptos().then((data : any) => {
       data.data.map((el : Crypto) => this.cryptos.push(el));
@@ -43,5 +48,16 @@ export class HomePage {
 
   getColor (price : string) {
     return Number(price) < 0 ? 'red' : '#29b813';
+  }
+
+  search () {
+    if(this.crypto === ''){
+      this.cryptos = this.cryptosCopy;
+    }
+
+    console.log(this.crypto);
+    console.log(this.cryptos);
+
+    this.cryptos = this.cryptos.filter((crypto : Crypto) => crypto.name.toLowerCase().startsWith(this.crypto.toLowerCase()));
   }
 }

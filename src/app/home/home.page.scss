@@ -16,6 +16,15 @@
   }
 }
 
+ion-content{
+  --background: #2f0743; 
+}
+
+ion-input{
+  --background: #fff;
+  padding: 25px !important;
+}
+
 ion-content * {
   margin: 0;
   padding: 0;
@@ -42,13 +51,12 @@ ion-list {
 
 h1 {
   width: 100%;
-  padding: 20px !important;
+  padding: 15px !important;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 5px;
   color: #fff;
   position: relative;
-  background-color: #2f0743;
 }
 
 .content h1::before {

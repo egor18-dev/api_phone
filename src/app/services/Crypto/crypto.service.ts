@@ -12,8 +12,6 @@ export class CryptoService {
   private _max: number = 100;
   private _api_url: string = 'https://api.coincap.io/v2/assets';
   private _calls : number = 0;
-  
-
 
   constructor(private _httpClient: HttpClient) {
   }
@@ -40,6 +38,23 @@ export class CryptoService {
           reject(err);
         }
       });
+    });
+  }
+
+  retrieveCrypto(cryptoId : string){
+    return new Promise((resolve, reject) => {
+
+      this._httpClient.get(`${this._api_url}/${cryptoId}`).subscribe({
+
+        next: (data : any) => {
+          resolve(data);
+        },
+        error: (err : any) => {
+          reject(err);
+        }
+
+      });
+
     });
   }
 
