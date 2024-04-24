@@ -43,6 +43,6 @@ export class HomePage {
   }
 
   getColor (price : string) {
-    return parseInt(price) > 0 ? 'green' : 'red';
+    return Number(price) < 0 ? 'red' : '#29b813';
   }
 }
