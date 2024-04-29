@@ -1,13 +1,35 @@
 <ion-content>
-    <h1>Mercat</h1>
-    <ion-input (input)="search()" [(ngModel)]="crypto" label="Cercar..." label-placement="floating" fill="outline" placeholder="Introdueix el nom..."></ion-input>
-    <ion-list>
-        <ion-item *ngFor="let crypto of getCryptos(); index as i" routerLink="/view/{{crypto.id}}">
-            <h5>({{i + 1}}) {{crypto.name}}</h5>
-            <h5 [ngStyle]="{'color': getColor(crypto.changePercent24Hr)}">{{crypto.changePercent24Hr}}</h5>
-        </ion-item>
-    </ion-list>
-    <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
-        <ion-infinite-scroll-content></ion-infinite-scroll-content>
-    </ion-infinite-scroll>
+  <h1>Mercat</h1>
+  <ion-input
+    (input)="search()"
+    [(ngModel)]="crypto"
+    label="Cercar..."
+    label-placement="floating"
+    fill="outline"
+    placeholder="Introdueix el nom..."
+  ></ion-input>
+  <ion-list>
+    <ion-item>
+      <ion-select aria-label="Favorite Fruit" value="normal" (ionChange)="read($event)">
+        <ion-select-option value="normal">Normal</ion-select-option>
+        <ion-select-option value="menor">Menor</ion-select-option>
+        <ion-select-option value="major">Major</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item
+      *ngFor="let crypto of getCryptos(); index as i"
+      routerLink="/view/{{crypto.id}}"
+    >
+      <h5>({{i + 1}}) {{crypto.name}}</h5>
+      <h5 [ngStyle]="{'color': getColor(crypto.changePercent24Hr)}">
+        {{crypto.changePercent24Hr}}
+      </h5>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <div (click)="scan()" class="search">&#x26B2;</div>
 </ion-content>

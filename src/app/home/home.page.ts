@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CryptoService } from '../services/Crypto/crypto.service';
 import { InfiniteScrollCustomEvent } from '@ionic/angular';
 import { Crypto } from '../models/crypto';
+import { BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 
 @Component({
   selector: 'app-home',
@@ -60,4 +61,20 @@ export class HomePage {
 
     this.cryptos = this.cryptos.filter((crypto : Crypto) => crypto.name.toLowerCase().startsWith(this.crypto.toLowerCase()));
   }
+
+  scan()
+  {
+    BarcodeScanner.scan().then((data : any) => {
+      console.log(data);
+    });
+  }
+
+  read(event : any) {
+    const selectedValue = event.detail.value;
+
+    if(selectedValue === 'major'){
+      this.cryptos = this.cryptos.filter((crypto: Crypto) => Number(crypto.changePercent24Hr) > 0);
+    }
+  }
+
 }
