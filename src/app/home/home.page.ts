@@ -71,9 +71,12 @@ export class HomePage {
 
   read(event : any) {
     const selectedValue = event.detail.value;
+    this.cryptos = this.cryptosCopy;
 
     if(selectedValue === 'major'){
       this.cryptos = this.cryptos.filter((crypto: Crypto) => Number(crypto.changePercent24Hr) > 0);
+    }else if(selectedValue === 'menor'){
+      this.cryptos = this.cryptos.filter((crypto: Crypto) => Number(crypto.changePercent24Hr) < 0);
     }
   }
 
