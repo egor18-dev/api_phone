@@ -1,5 +1,6 @@
 <ion-content>
   <h1>Mercat</h1>
+  <video #video autoplay *ngIf="isOpened"></video>
   <ion-input
     (input)="search()"
     [(ngModel)]="crypto"
