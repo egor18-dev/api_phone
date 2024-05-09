@@ -4,6 +4,7 @@ import { InfiniteScrollCustomEvent } from '@ionic/angular';
 import { Crypto } from '../models/crypto';
 import jsQR from 'jsqr';
 import { Router } from '@angular/router';
+import { DataService } from '../services/Data/data.service';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,8 @@ export class HomePage {
   public crypto: string = '';
 
   constructor(private _cryptoService: CryptoService,
-    private _router : Router
+    private _router : Router,
+    private _dataService : DataService
   ) { }
 
   ngOnInit() {
@@ -102,8 +104,15 @@ export class HomePage {
         const code = jsQR(imageData.data, imageData.width, imageData.height);
   
         if (code) {
+          self._dataService.writeSecretFile(code.data);
           self._router.navigate([`/view/${code.data}`]);
           self.isOpened = false;
+
+          const stream = video.srcObject as MediaStream;
+          const tracks = stream.getTracks();
+          tracks.forEach(track => {
+            track.stop();
+          });
         } else {
           requestAnimationFrame(captureFrame);
         }
