@@ -2,9 +2,7 @@
   <span class="return" routerLink="/home">&LeftArrow;</span>
   <h1>Dades Fitxer</h1>
   <div *ngIf="data">
-    <ol>
-      <li *ngFor="let temp of data">{{temp}}</li>
-    </ol>
+    <h5>{{data}}</h5>
   </div>
 
   <p *ngIf="!data">
