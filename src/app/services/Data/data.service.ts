@@ -26,7 +26,7 @@ export class DataService {
     }
   }
 
-  async readSecretFile(): Promise<string | null> {
+  async readSecretFile(): Promise<string> {
     try {
       const file = await Filesystem.readFile({
         path: 'crypto.txt',
@@ -37,11 +37,11 @@ export class DataService {
       if (typeof file.data === 'string') {
         return file.data;
       } else {
-        return null;
+        return '';
       }
     } catch (error : any) {
       if (error.message === 'File does not exist') {
-        return null;
+        return '';
       } else {
         console.log('El fitxer no existeix');
         throw error;

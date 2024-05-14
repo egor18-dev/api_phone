@@ -8,12 +8,12 @@ import { DataService } from '../services/Data/data.service';
 })
 export class FitxersPage implements OnInit {
 
-  public data !: any [];
+  public data !: string;
 
   constructor(private _dataService : DataService) { }
 
   ngOnInit() {
-    this._dataService.readSecretFile().then((data : any) => {
+    this._dataService.readSecretFile().then((data : string) => {
       if(data) this.data = data;
     });
   }

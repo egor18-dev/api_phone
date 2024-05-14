@@ -49,6 +49,7 @@ export class HomePage {
     }
 
     this._cryptoService.retrieveCryptos();
+    
   }
 
   onIonInfinite(ev: any) {
@@ -61,18 +62,14 @@ export class HomePage {
 
   getCryptos() {
     if(this._selectedValue){
-
       if(this._selectedValue === 'major'){
         return this._cryptoService.getCryptos().filter((crypto: Crypto) => Number(crypto.changePercent24Hr) > 0);
       }else if(this._selectedValue === 'menor'){
         return this._cryptoService.getCryptos().filter((crypto: Crypto) => Number(crypto.changePercent24Hr) < 0);
-      }else{
-        return this._cryptoService.getCryptos();
       }
-
-    }else{
-      return this._cryptoService.getCryptos();
     }
+
+      return this._cryptoService.getCryptos();
   }
 
   getColor(price: string) {
