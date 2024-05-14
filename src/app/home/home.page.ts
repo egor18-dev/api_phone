@@ -37,10 +37,7 @@ export class HomePage {
       this.cryptosCopy = this.cryptos;
     }
 
-    this._cryptoService.retrieveCryptos().then((data: any) => {
-      data.data.map((el: Crypto) => this.cryptos.push(el));
-      console.log(data);
-    });
+    this._cryptoService.retrieveCryptos();
   }
 
   onIonInfinite(ev: any) {
@@ -52,7 +49,7 @@ export class HomePage {
   }
 
   getCryptos() {
-    return this.cryptos;
+    return this._cryptoService.getCryptos();
   }
 
   getColor(price: string) {

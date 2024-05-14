@@ -21,13 +21,17 @@ export class ViewPage implements OnInit {
   ngOnInit() {
     this._id = this._activatedRoute.snapshot.paramMap.get('id')!;
 
-    this._cryptoService.retrieveCrypto(this._id).then((data : any) => {
-      this.crypto = data.data;
-    }); 
+    this._cryptoService.retrieveCrypto(this._id);
   }
 
   getCryptoColor (cryptoValue : any) {
     return parseInt(cryptoValue) > 0 ? '#25b331' : '#e41010';
+  }
+
+  getActualCrypto () {
+    this.crypto = this._cryptoService.getActualCrypto();
+
+    return this.crypto;
   }
 
 }
