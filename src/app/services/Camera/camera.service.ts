@@ -6,6 +6,12 @@ import { Barcode, BarcodeFormat, BarcodeScanner, IsSupportedResult, ScanOptions,
 })
 export class CameraService {
 
+  /*
+    Servei per escanejar QR, no l'he pogut provar en el meu telefon,
+    perque no tenia el cable i al meu dispositiu no anaba al barcodescanner
+    i per aixo ho vaig fer amb el canvas.
+  */
+
   private _barcodes !: Barcode[];
   private _supported: boolean;
 

@@ -8,6 +8,11 @@ import { DataService } from '../services/Data/data.service';
 })
 export class FitxersPage implements OnInit {
 
+  /*
+    Retorno els valors del string guardats en el telefon,
+    no ho he pogut provar al meu telefon pero suposo que anirà.
+  */
+
   public data !: string;
 
   constructor(private _dataService : DataService) { }

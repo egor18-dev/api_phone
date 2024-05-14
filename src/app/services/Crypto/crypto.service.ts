@@ -14,6 +14,11 @@ export class CryptoService {
   private _cryptos: Crypto[] = [];
   private _actualCrypto !: Crypto;
 
+  /*
+    He evitat retornar promeses i torno els valos en getters directament,
+    aquest si que l'he pogut provar directament al ordenador.
+  */
+
   constructor(private _httpClient: HttpClient) {
     this.retrieveCryptos();
   }
