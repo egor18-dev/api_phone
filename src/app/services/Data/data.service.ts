@@ -43,6 +43,7 @@ export class DataService {
       if (error.message === 'File does not exist') {
         return null;
       } else {
+        console.log('El fitxer no existeix');
         throw error;
       }
     }

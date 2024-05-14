@@ -1,0 +1,13 @@
+<ion-content [fullscreen]="true">
+  <span class="return" routerLink="/home">&LeftArrow;</span>
+  <h1>Dades Fitxer</h1>
+  <div *ngIf="data">
+    <ol>
+      <li *ngFor="let temp of data">{{temp}}</li>
+    </ol>
+  </div>
+
+  <p *ngIf="!data">
+    No existeix ningun fitxer amb criptomonedes
+  </p>
+</ion-content>

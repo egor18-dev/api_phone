@@ -1,0 +1,57 @@
+@keyframes leftAnim{
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+
+ion-content *{
+    margin-left: 20px;
+    margin-top: 20px !important;
+}
+
+ion-content{
+    --background: #2f0743; 
+
+    span{
+        color: #fff;
+        cursor: pointer;
+    }
+
+    h1{
+        width: 100%;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 5px;
+        color: #fff;
+        position: relative;
+        animation-name: leftAnim;
+        animation-duration: 250ms;
+    }
+}
+
+ol{
+    color: #fff;
+
+    li{
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 300;
+        font-size: 1em;
+    }
+}
+
+p{
+    margin-left: 15px;
+    color: red;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation-name: leftAnim;
+    animation-duration: 250ms;
+
+    &::before{
+        content: "-";
+    }
+}

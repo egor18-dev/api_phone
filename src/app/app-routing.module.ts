@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./view/view.module').then((m) => m.ViewPageModule)
   },
   {
+    path: 'files',
+    loadChildren: () => import('./fitxers/fitxers.module').then((m) => m.FitxersPageModule)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
@@ -18,6 +22,10 @@ const routes: Routes = [
   {
     path: 'view',
     loadChildren: () => import('./view/view.module').then( m => m.ViewPageModule)
+  },
+  {
+    path: 'fitxers',
+    loadChildren: () => import('./fitxers/fitxers.module').then( m => m.FitxersPageModule)
   },
 ];
 
